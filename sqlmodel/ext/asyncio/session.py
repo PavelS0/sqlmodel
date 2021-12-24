@@ -74,6 +74,10 @@ class AsyncSession(_AsyncSession):
             SelectOfScalar[_TSelectParam],
             Executable[_TSelectParam],
         ],
+        params: Optional[Union[Mapping[str, Any], Sequence[Mapping[str, Any]]]] = None,
+        execution_options: Mapping[Any, Any] = util.EMPTY_DICT,
+        bind_arguments: Optional[Mapping[str, Any]] = None,
+        **kw: Any,
     ) -> ScalarResult[_TSelectParam]:
         # TODO: the documentation says execution_options accepts a dict, but only
         # util.immutabledict has the union() method. Is this a bug in SQLAlchemy?
