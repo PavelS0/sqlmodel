@@ -20,8 +20,7 @@ from typing import (
     Type,
     TypeVar,
     Union,
-    cast,
-    Enum
+    cast
 )
 
 from pydantic import BaseConfig, BaseModel
@@ -42,6 +41,7 @@ from sqlalchemy import (
     Interval,
     Numeric,
     inspect,
+    Enum
 )
 from sqlalchemy.orm import RelationshipProperty, declared_attr, registry, relationship
 from sqlalchemy.orm.attributes import set_attribute
