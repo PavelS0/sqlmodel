@@ -1,9 +1,9 @@
 import ipaddress
 import uuid
 import weakref
+import enum
 from datetime import date, datetime, time, timedelta
 from decimal import Decimal
-from enum import Enum
 from pathlib import Path
 from typing import (
     AbstractSet,
@@ -21,6 +21,7 @@ from typing import (
     TypeVar,
     Union,
     cast,
+    Enum
 )
 
 from pydantic import BaseConfig, BaseModel
@@ -393,8 +394,8 @@ def get_sqlachemy_type(field: ModelField) -> Any:
         return Interval
     if issubclass(field.type_, time):
         return Time
-    if issubclass(field.type_, Enum):
-        return Enum
+    if issubclass(field.type_, enum.Enum):
+        return Enum(field.type_)
     if issubclass(field.type_, bytes):
         return LargeBinary
     if issubclass(field.type_, Decimal):
