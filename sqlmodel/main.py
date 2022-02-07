@@ -565,8 +565,8 @@ class SQLModel(BaseModel, metaclass=SQLModelMetaclass, registry=default_registry
 
     @classmethod
     def parse_obj(
-        cls: Type["SQLModel"], obj: Any, update: Optional[Dict[str, Any]] = None
-    ) -> "SQLModel":
+        cls: Type[_TSQLModel], obj: Any, update: Optional[Dict[str, Any]] = None
+    ) -> _TSQLModel:
         obj = cls._enforce_dict_if_root(obj)
         # SQLModel, support update dict
         if update is not None:
